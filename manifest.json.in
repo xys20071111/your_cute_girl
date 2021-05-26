@@ -1,0 +1,15 @@
+{
+    "name": "ycg.xys",
+    "description": "A little girl who can stay with you.",
+    "architecture": "@CLICK_ARCH@",
+    "title": "Your Cute Girl",
+    "hooks": {
+        "ycg": {
+            "apparmor": "ycg.apparmor",
+            "desktop":  "ycg.desktop"
+        }
+    },
+    "version": "1.0.0",
+    "maintainer": "Tom Xue <xys20071111@hotmail.com>",
+    "framework" : "@CLICK_FRAMEWORK@"
+}
