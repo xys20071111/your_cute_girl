@@ -75,7 +75,7 @@ MainView {
 
             importModule('speak', function() {
                 console.log('module imported');
-                python.call('speak.get_version', [], function(returnValue) {
+                python.call('speak.get_python_version', [], function(returnValue) {
                     console.log(returnValue)
                 })
             });
