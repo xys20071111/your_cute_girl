@@ -13,58 +13,78 @@ MainView {
 
     width: units.gu(45)
     height: units.gu(75)
+    Component {
+       id: aboutPage
+       About{}
+    }
 
-    Page {
-        anchors.fill: parent
-
-        header: PageHeader {
-            id: header
-            title: i18n.tr('Your Cute Girl')
-        }
-
-        Image {
-            id: image
-            x: 0
-            y: 50
-            anchors.topMargin: 8
-            source: "../img/image1.png"
-            fillMode: Image.PreserveAspectFit
-            anchors.top: header.bottom
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.bottom: parent.bottom
-            
-            MouseArea {
-                id: mouseArea
-                anchors.bottomMargin: 70
-                anchors.fill: parent
-                onClicked: {
-                    python.call('speak.speak',[],function(res){
-                        element.text = res;
-                    })
+    PageStack{
+        id:pageStack
+        Component.onCompleted: {
+                    pageStack.push(mainPage);
                 }
+
+        Page {
+            id:mainPage
+            anchors.fill: parent
+
+            header: PageHeader {
+                id: header
+                title: i18n.tr('Your Cute Girl')
+                trailingActionBar.actions: [
+                    Action {
+                        text: i18n.tr("About")
+                        onTriggered: pageStack.push(aboutPage)
+                        iconName: "info"
+                    }
+                ]
+
             }
 
-        }
+            Image {
+                id: image
+                x: 0
+                y: 50
+                anchors.topMargin: 8
+                source: "../img/image1.png"
+                fillMode: Image.PreserveAspectFit
+                    anchors.top: header.bottom
+                anchors.right: parent.right
+                anchors.left: parent.left
+                anchors.bottom: parent.bottom
 
-        Text {
-            id: element
-            x: 0
-            y: 541
-            height: 59
-            text: qsTr("")
-            fontSizeMode: Text.HorizontalFit
-            anchors.right: parent.right
-            anchors.rightMargin: 0
-            anchors.left: parent.left
-            anchors.leftMargin: 0
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 0
-            anchors.topMargin: 523
-            lineHeight: 2
-            verticalAlignment: Text.AlignVCenter
-            horizontalAlignment: Text.AlignHCenter
-            font.pixelSize: 48
+                MouseArea {
+                    id: mouseArea
+                    anchors.bottomMargin: 70
+                    anchors.fill: parent
+                    onClicked: {
+                        python.call('speak.speak',[],function(res){
+                            element.text = res;
+                        })
+                    }
+                }
+
+            }
+
+            Text {
+                id: element
+                x: 0
+                y: 541
+                height: 59
+                text: qsTr("")
+                fontSizeMode: Text.HorizontalFit
+                anchors.right: parent.right
+                anchors.rightMargin: 0
+                anchors.left: parent.left
+                anchors.leftMargin: 0
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 0
+                anchors.topMargin: 523
+                lineHeight: 2
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignHCenter
+                font.pixelSize: 48
+            }
         }
     }
     Python {

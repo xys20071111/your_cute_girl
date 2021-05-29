@@ -3,11 +3,11 @@ import time
 import random
 import dialog
 DIALOG_TYPE = [1, 2]
-MORNING = [5, 6, 7, 8, 9]
-NOON = [10, 11, 12]
-AFTERNOON = [13, 14, 15, 16]
-NIGHT = [17, 18, 19, 20]
-MIDNIGHT = [0, 1, 2, 3, 4, 21, 22, 23]
+MORNING = [5, 6, 7, 8, 9, 10]
+NOON = [11, 12, 13]
+AFTERNOON = [14, 15, 16, 17]
+NIGHT = [18, 19, 20, 21]
+MIDNIGHT = [0, 1, 2, 3, 4, 22, 23]
 
 
 def get_python_version():
